@@ -18,6 +18,9 @@ class Tagged extends Eloquent
 		$this->table = config('taggable.taggables_table_name');
 
 		parent::__construct($attributes);
+		if (function_exists('config') && $connection = config('taggable.connection')) {
+			$this->connection = $connection;
+		}
 
 		$this->taggingUtility = app(TaggingUtility::class);
 	}
