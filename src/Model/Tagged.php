@@ -18,6 +18,8 @@ class Tagged extends Eloquent
 		$this->table = config('taggable.taggables_table_name');
 
 		parent::__construct($attributes);
+
+		//萧队长修改
 		if (function_exists('config') && $connection = config('taggable.connection')) {
 			$this->connection = $connection;
 		}
